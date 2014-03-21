@@ -1,5 +1,5 @@
 <?php
-require_once('config.php');
+require_once('../config.php');
 require_once('error_handler.php');
 
 class Chat
@@ -23,7 +23,7 @@ class Chat
 	
 	public function postNewMessage($user_name, $message, $color) {
 		$user_name = $this->mysqli->real_escape_string($user_name);
-		$message = $this->mysqli->real_escape_string($message);
+		$message = htmlentities($this->mysqli->real_escape_string($message));
 		$color = $this->mysqli->real_escape_string($color);
 		$query =
 		'
